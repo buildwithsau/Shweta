@@ -1,0 +1,222 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+  padding: 8rem 1.5rem 4rem;
+}
+
+.hero__bg-pattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 80% 20%, rgba(27, 58, 107, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(74, 111, 165, 0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.hero__container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+}
+
+/* Content */
+.hero__content {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  max-width: 720px;
+}
+
+.hero__content--loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__label {
+  margin-bottom: 1.5rem;
+}
+
+.hero__heading {
+  font-size: clamp(2.8rem, 6vw, 5rem);
+  color: var(--color-text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.hero__heading-line {
+  display: block;
+}
+
+.hero__heading-line--accent {
+  color: var(--color-navy);
+  font-style: italic;
+}
+
+.hero__sub {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-slate);
+  margin-bottom: 1.75rem;
+}
+
+.hero__description {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.75;
+  max-width: 580px;
+  margin-bottom: 2.5rem;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero__btn {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.8rem 1.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all var(--transition-mid);
+  border: 1.5px solid transparent;
+}
+
+.hero__btn--primary {
+  background: var(--color-navy);
+  color: white;
+  border-color: var(--color-navy);
+}
+
+.hero__btn--primary:hover {
+  background: var(--color-navy-dark);
+  border-color: var(--color-navy-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hero__btn--secondary {
+  background: transparent;
+  color: var(--color-navy);
+  border-color: var(--color-slate-muted);
+}
+
+.hero__btn--secondary:hover {
+  border-color: var(--color-navy);
+  background: var(--color-bg-subtle);
+  transform: translateY(-2px);
+}
+
+/* Stats */
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.9s ease 0.35s, transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s;
+  padding-top: 1rem;
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.hero__stats--loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero__stat-number {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 500;
+  color: var(--color-navy);
+  line-height: 1;
+}
+
+.hero__stat-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  max-width: 140px;
+  line-height: 1.4;
+}
+
+.hero__stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--color-border);
+  flex-shrink: 0;
+}
+
+/* Scroll indicator */
+.hero__scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  right: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity var(--transition-fast);
+}
+
+.hero__scroll-indicator:hover {
+  opacity: 1;
+}
+
+.hero__scroll-text {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  writing-mode: vertical-rl;
+}
+
+.hero__scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-slate-muted), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.1); }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 7rem 1.25rem 3rem;
+  }
+
+  .hero__stats {
+    gap: 1.5rem;
+  }
+
+  .hero__stat-divider {
+    display: none;
+  }
+
+  .hero__scroll-indicator {
+    display: none;
+  }
+}
